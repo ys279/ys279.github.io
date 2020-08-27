@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio - misc</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-08-25T20:55:00+02:00</updated><entry><title>Yiping's Blog1</title><link href="http://ys279.github.io/yipings-blog1.html" rel="alternate"></link><published>2020-08-25T20:55:00+02:00</published><updated>2020-08-25T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-08-25:/yipings-blog1.html</id><summary type="html">&lt;h1&gt;How to Create a Static Page on Github&lt;/h1&gt;
+&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+&lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;How to Create a Static Page on Github&lt;/h1&gt;
+&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+&lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.&lt;/p&gt;
+&lt;h2&gt;Step 2: Install Pelican&lt;/h2&gt;
+&lt;p&gt;Install Pelican and Markdown by running the following command :  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install pelican &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install pelican markdown&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then Clone the source repository and change directory to the site:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git clone https://github.com/ys279/ys279.github.io-src/tree/master ss&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd ss&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Step 3: Create a Blog&lt;/h2&gt;
+&lt;p&gt;Clone the output repository as a git submodule :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;git submodule add https://github.com/ys279/ys279.github.io output&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then Create a skeleton project via the pelican-quickstart command, and give the answer 
+URL prefix: http://ys279.github.io  &lt;/p&gt;
+&lt;p&gt;Write a .md file(Blog1.md) in content folder as the first blog.
+Also can change the site theme with pelican theme.&lt;/p&gt;
+&lt;h2&gt;Step 4 :Generate my site, commit and push&lt;/h2&gt;
+&lt;p&gt;From my site directory, run the pelican command to generate site:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pelican content&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;test result using:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;make serve&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and point browser to localhost:8000&lt;/p&gt;
+&lt;p&gt;If  everything is OK, generate the website:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;make publish&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then add  files to git tracking, commit them, and push to the repositories. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd output&lt;/span&gt;
+&lt;span class="err"&gt;git add .&lt;/span&gt;
+&lt;span class="err"&gt;git commit -m &amp;quot;Final post.&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;git pull&lt;/span&gt;
+&lt;span class="err"&gt;echo &amp;#39;*.pyc&amp;#39; &amp;gt;&amp;gt; .gitignore &lt;/span&gt;
+&lt;span class="err"&gt;git add .&lt;/span&gt;
+&lt;span class="err"&gt;git commit -m &amp;quot;First commit.&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;git push -u origin master&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, you can visit the https://ys279.github.io and see the new site I’ve created.&lt;/p&gt;</content><category term="misc"></category></entry></feed>
