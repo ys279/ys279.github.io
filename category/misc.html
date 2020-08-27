@@ -1,77 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>misc</title>
+        <title>Data Science Portfolio - misc</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="generator" content="Pelican" />
+        <meta name="author" content="Yiping" />
+        <meta name="copyright" content="Yiping" />
+        <meta name="robots" content="noindex,follow">
+
+        <link rel="stylesheet" href="http://ys279.github.io/theme/css/main.css" type="text/css" />
+
+        <!--[if IE]>
+                <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://ys279.github.io/css/ie.css"/>
+                <script src="http://ys279.github.io/js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="http://ys279.github.io/css/ie6.css"/><![endif]-->
+
 </head>
-<body>
 
-    <div class="main-nav-container">
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://ys279.github.io">Data Science Portfolio </a></h1>
+                <nav>
+                    <a href="http://ys279.github.io/category/misc.html">misc</a>&nbsp;
+                </nav>
+        </header><!-- /#banner -->
+        
+        
 
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-lg-2-3">
-                <div class="main-nav">
-                    <ul class="main-nav-list">
-                        <li class="main-nav-item"><a href="/" class="pure-menu-link">Data Science Portfolio</a></li>
-
-                        <li class="main-nav-item active"><a href="/category/misc.html" class="pure-menu-link">misc</a></li>
-                    </ul>
-                </div>
-             </div>
-
-             <div class="pure-u-1 pure-u-lg-1-3"></div>
-        </div>
-
-    </div>
-
-
-<div class="category-page-container">
-    <div class="category-logo">
-        <h1><a href="/category/misc.html" rel="bookmark" title="Permalink to misc">misc</a></h1>
-    </div>
-
-    <div class="section-header">
-        Latest
-    </div>
-
-
-
-    <div class="pure-g article-row">
-        <div class="pure-u-1 article-info">
-           <div class="col">
-
-               <h1><a href="/yipings-blog1.html">Yiping's Blog1</a></h1>
-
-               <h1>How to Create a Static Page on Github</h1>
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://ys279.github.io/yipings-blog1.html">Yiping's Blog1</a></h1> 
+<footer class="post-info">
+        <abbr class="published" title="2020-08-25T20:55:00+02:00">
+                Tue 25 August 2020
+        </abbr>
+</footer><!-- /.post-info --><h1>How to Create a Static Page on Github</h1>
 <h2>Step 1: Set up github.io page</h2>
 <p>Create two new repositories: ys279.github.io-src and ys279.github.io.
-The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican …</p>
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.</p>
+<h2>Step 2: Install Pelican</h2>
+<p>Install Pelican and Markdown by running the following command :  </p>
+<div class="highlight"><pre><span></span><code><span class="err">pip install pelican </span>
+</code></pre></div>
 
-               <div class="post-meta pure-g">
-                   <div class="pure-u-3-4 meta-data">
-                       <a href="/author/yiping.html" class="category">Yiping</a><br />
-                       &mdash; <abbr title="2020-08-25T20:55:00+02:00">Tue 25 August 2020</abbr>
-                   </div>
-               </div>
 
-           </div>
+<div class="highlight"><pre><span></span><code><span class="err">pip install pelican markdown</span>
+</code></pre></div>
 
-        </div>
 
-    </div>
+<p>Then Clone the source repository and change directory to the site:</p>
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/ys279/ys279.github.io-src/tree/master ss</span>
+</code></pre></div>
 
-    </div>
 
-<div class="pagination">
-    <div class="post-meta pure-g">
-    </div>
-</div>
-</div>
+<div class="highlight"><pre><span></span><code><span class="err">cd ss</span>
+</code></pre></div>
+
+
+<h2>Step 3: Create a Blog</h2>
+<p>Clone the output repository as a git submodule :</p>
+<div class="highlight"><pre><span></span><code><span class="err">git submodule add https://github.com/ys279/ys279.github.io output</span>
+</code></pre></div>
+
+
+<p>Then Create a skeleton project via the pelican-quickstart command, and give the answer 
+URL prefix: http://ys279.github.io  </p>
+<p>Write a .md file(Blog1.md) in content folder as the first blog.
+Also can change the site theme with pelican theme.</p>
+<h2>Step 4 :Generate my site, commit and push</h2>
+<p>From my site directory, run the pelican command to generate site:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican content</span>
+</code></pre></div>
+
+
+<p>test result using:</p>
+<div class="highlight"><pre><span></span><code><span class="err">make serve</span>
+</code></pre></div>
+
+
+<p>and point browser to localhost:8000</p>
+<p>If  everything is OK, generate the website:</p>
+<div class="highlight"><pre><span></span><code><span class="err">make publish</span>
+</code></pre></div>
+
+
+<p>Then add  files to git tracking, commit them, and push to the repositories. </p>
+<div class="highlight"><pre><span></span><code><span class="err">cd output</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;Final post.&quot;</span>
+<span class="err">git pull</span>
+<span class="err">echo &#39;*.pyc&#39; &gt;&gt; .gitignore </span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;First commit.&quot;</span>
+<span class="err">git push -u origin master</span>
+</code></pre></div>
+
+
+<p>Now, you can visit the https://ys279.github.io and see the new site I’ve created.</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://ys279.github.io/" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                     Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>. Theme is using <a href="https://github.com/getpelican/pelican-themes" target="_blank">cebong</a>.
+                </address><!-- /#about -->
+
+        </footer><!-- /#contentinfo -->
 
 </body>
 </html>
