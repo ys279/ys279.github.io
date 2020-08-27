@@ -3,101 +3,72 @@
 <head>
         <title>Data Science Portfolio - Yiping</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" href="http://ys279.github.io/theme/css/main.css" type="text/css" />
-        <link href="http://ys279.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Data Science Portfolio ATOM Feed" />
-
-        <!--[if IE]>
-                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-        <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://ys279.github.io/css/ie.css"/>
-                <script src="http://ys279.github.io/js/IE8.js" type="text/javascript"></script><![endif]-->
-
-        <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" media="all" href="http://ys279.github.io/css/ie6.css"/><![endif]-->
-
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
-
 <body>
-        
-        
 
-            <header>
-                <h1><a href="http://ys279.github.io" id="site-title">Data Science Portfolio </a> : <a href="http://ys279.github.io/yipings-blog1.html" id="page-title">Yiping's Blog1</a></h1>
-<time datetime="2020-08-25T20:55:00+02:00">Tue 25 August 2020</time>            </header>
+    <div class="main-nav-container">
 
-            <article>
-                <h1>How to Create a Static Page on Github</h1>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-lg-2-3">
+                <div class="main-nav">
+                    <ul class="main-nav-list">
+                        <li class="main-nav-item"><a href="/" class="pure-menu-link">Data Science Portfolio</a></li>
+
+                        <li class="main-nav-item"><a href="/category/misc.html" class="pure-menu-link">misc</a></li>
+                    </ul>
+                </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-lg-1-3"></div>
+        </div>
+
+    </div>
+
+
+<div class="author-page-header">
+</div>
+
+<div class="author-page-divider">
+    <span>Latest Posts</span>
+</div>
+
+
+<div class="author-page-container">
+
+    <div class="post">
+        <div class="post-meta pure-g">
+
+            <div class="pure-u-3-4 meta-data">
+                <a href="/category/misc.html" class="category">misc</a><br />
+
+                <a class="author" href="/author/yiping.html">Yiping</a>
+                &mdash; <abbr title="2020-08-25T20:55:00+02:00">Tue 25 August 2020</abbr>
+            </div>
+        </div>
+        <h2><a href="/yipings-blog1.html" rel="bookmark" title="Permalink to Yiping's Blog1">Yiping's Blog1</a></h2>
+        <div class="post-content">
+            <h1>How to Create a Static Page on Github</h1>
 <h2>Step 1: Set up github.io page</h2>
 <p>Create two new repositories: ys279.github.io-src and ys279.github.io.
-The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.</p>
-<h2>Step 2: Install Pelican</h2>
-<p>Install Pelican and Markdown by running the following command :  </p>
-<div class="highlight"><pre><span></span><code><span class="err">pip install pelican </span>
-</code></pre></div>
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican …</p>
+        </div>
+        <div class="post-footer">
+            <a href="/yipings-blog1.html">Read more</a>
+        </div>
+    </div>
 
+<div class="pagination">
+    <div class="post-meta pure-g">
+    </div>
+</div>
 
-<div class="highlight"><pre><span></span><code><span class="err">pip install pelican markdown</span>
-</code></pre></div>
+</div>
 
-
-<p>Then Clone the source repository and change directory to the site:</p>
-<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/ys279/ys279.github.io-src/tree/master ss</span>
-</code></pre></div>
-
-
-<div class="highlight"><pre><span></span><code><span class="err">cd ss</span>
-</code></pre></div>
-
-
-<h2>Step 3: Create a Blog</h2>
-<p>Clone the output repository as a git submodule :</p>
-<div class="highlight"><pre><span></span><code><span class="err">git submodule add https://github.com/ys279/ys279.github.io output</span>
-</code></pre></div>
-
-
-<p>Then Create a skeleton project via the pelican-quickstart command, and give the answer 
-URL prefix: http://ys279.github.io  </p>
-<p>Write a .md file(Blog1.md) in content folder as the first blog.
-Also can change the site theme with pelican theme.</p>
-<h2>Step 4 :Generate my site, commit and push</h2>
-<p>From my site directory, run the pelican command to generate site:</p>
-<div class="highlight"><pre><span></span><code><span class="err">pelican content</span>
-</code></pre></div>
-
-
-<p>test result using:</p>
-<div class="highlight"><pre><span></span><code><span class="err">make serve</span>
-</code></pre></div>
-
-
-<p>and point browser to localhost:8000</p>
-<p>If  everything is OK, generate the website:</p>
-<div class="highlight"><pre><span></span><code><span class="err">make publish</span>
-</code></pre></div>
-
-
-<p>Then add  files to git tracking, commit them, and push to the repositories. </p>
-<div class="highlight"><pre><span></span><code><span class="err">cd output</span>
-<span class="err">git add .</span>
-<span class="err">git commit -m &quot;Final post.&quot;</span>
-<span class="err">git pull</span>
-<span class="err">echo &#39;*.pyc&#39; &gt;&gt; .gitignore </span>
-<span class="err">git add .</span>
-<span class="err">git commit -m &quot;First commit.&quot;</span>
-<span class="err">git push -u origin master</span>
-</code></pre></div>
-
-
-<p>Now, you can visit the https://ys279.github.io and see the new site I’ve created.</p>            </article>
-
-        <footer>
-            <nav>
-                <ul>
-                </ul>
-            </nav>
-                <p id="theme-credit"><a href="http://mathieu.agopian.info/mnmlist/theme.html">Thème mnmlist</a></p>
-        </footer>
 
 </body>
 </html>
