@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-08-25T20:55:00+02:00</updated><entry><title>Yiping's Blog1</title><link href="http://ys279.github.io/yipings-blog1.html" rel="alternate"></link><published>2020-08-25T20:55:00+02:00</published><updated>2020-08-25T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-08-25:/yipings-blog1.html</id><summary type="html">&lt;h1&gt;How to Create a Static Page on Github&lt;/h1&gt;
-&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-09-10T20:55:00+02:00</updated><entry><title>Yiping's Blog2</title><link href="http://ys279.github.io/yipings-blog2.html" rel="alternate"></link><published>2020-09-10T20:55:00+02:00</published><updated>2020-09-10T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-10:/yipings-blog2.html</id><summary type="html">&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
+&lt;h3&gt;It is well known that if the square root of a natural number is not an integer, then it is irrational. The decimal expansion of such square roots is infinite without any repeating pattern at all.&lt;/h3&gt;
+&lt;h3&gt;The square root of two …&lt;/h3&gt;</summary><content type="html">&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
+&lt;h3&gt;It is well known that if the square root of a natural number is not an integer, then it is irrational. The decimal expansion of such square roots is infinite without any repeating pattern at all.&lt;/h3&gt;
+&lt;h3&gt;The square root of two is 1.41421356237309504880..., and the digital sum of the first one hundred decimal digits is 475.&lt;/h3&gt;
+&lt;h3&gt;For the first one hundred natural numbers, find the total of the digital sums of the first one hundred decimal digits for all the irrational square roots.&lt;/h3&gt;
+&lt;p&gt;The idea of sovling this is to write a loop to see if the number in the loop(range 1-100) is irrational, if it is,  then get the  digital sums of irrational square roots and sum them up.  &lt;/p&gt;
+&lt;p&gt;First write a function to find the total of the digital sums of the first n decimal digits for all the irrational square roots, define the function as "dsum(n)"&lt;/p&gt;
+&lt;p&gt;Next specific the range of the loop is &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;for i in range(1, n+1):&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;where n =100. &lt;/p&gt;
+&lt;p&gt;Then, to determine if the number is irrational number and get the digits of square roots, we know that "decimal" library deal with decimal problem and Context function give the the decimal with percision. We know that the square root of a rational number is a integer thus its length can not be bigger than 2(for limit 100), so when we use &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;[:-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to get rid of the rational numbers and use &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;str(Decimal(i).sqrt(Context(prec=102)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to get the digit of the squaer root, use&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="na"&gt;.replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to get rid of the radix point&lt;br&gt;
+next step sum all the digits&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;digit = int(digit)&lt;/span&gt;
+&lt;span class="err"&gt;sums = sums + digit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And then run function dsum(100) can get the answer.  &lt;/p&gt;
+&lt;h2&gt;2.Solve fewer than 100,000 people: Problem 36&lt;/h2&gt;
+&lt;h3&gt;The decimal number, 585 = 1001001001 (binary), is palindromic in both bases.&lt;/h3&gt;
+&lt;h3&gt;Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.&lt;/h3&gt;
+&lt;h3&gt;(Please note that the palindromic number, in either base, may not include leading zeros.)&lt;/h3&gt;
+&lt;p&gt;The idea of this solution if to write a loop to see if the number in the loop(range 1000000) is if it is,  palindromic in both bases 10 and 2. If it is, then sum them up.  &lt;/p&gt;
+&lt;p&gt;First write a function to find the sum of all numbers, in range(n), which are palindromic in base 10 and base 2.define the function as "palindromic_sum(n)" &lt;/p&gt;
+&lt;p&gt;Next specific the range of the loop is &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;for i in range(n):&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where n = 1000000  &lt;/p&gt;
+&lt;p&gt;see if it is palindromic in both base10 use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s s-Atom"&gt;::-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;see if it is palindromic in both base2 use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;bin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;&lt;span class="p"&gt;])[&lt;/span&gt;&lt;span class="s s-Atom"&gt;::-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;since "bin"return the  number of base2 from number base10 and also get rid of the first digit that "bin" produce which is useless for this problem.&lt;br&gt;
+And then sum all these palindromic number&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;x = x+i&lt;/span&gt;
+&lt;span class="err"&gt;    return(x)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And then run function palindromic_sum(10**6) to get the answer.  &lt;/p&gt;
+&lt;h2&gt;3.Solve fewer than 500,000 people:Problem 4&lt;/h2&gt;
+&lt;h3&gt;A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.&lt;/h3&gt;
+&lt;p&gt;The idea of this solution if to write two loops , each loop means one 3-digit number and mutiple them to see if the product reads the same both ways. If it is ,add into a list and after finish loop, find the max of this list to get the answer.  &lt;/p&gt;
+&lt;p&gt;First write a function to find largest palindrome made from the product of two n-digit numbers.define the function as "large_palindromic(x,y)" use x and y to define the upper bound and lower bound:&lt;/p&gt;
+&lt;p&gt;Next specific the range of the loop is &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;for i in range(x, y, -1):&lt;/span&gt;
+&lt;span class="err"&gt;        for j in range(x, y, -1):&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Where x = 999,y = 99&lt;br&gt;
+Then get the product and determine if it reads the same both ways use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="s s-Atom"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;
+            &lt;span class="s s-Atom"&gt;if&lt;/span&gt; &lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nf"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s s-Atom"&gt;j&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="s s-Atom"&gt;::-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="s s-Atom"&gt;:&lt;/span&gt;
+                &lt;span class="s s-Atom"&gt;res&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s s-Atom"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After get the list of palindromic number use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;max(res)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to get the largest one.  &lt;/p&gt;
+&lt;p&gt;And then run function large_palindromic(999,99) can get the answer.  &lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Yiping's Blog1</title><link href="http://ys279.github.io/yipings-blog1.html" rel="alternate"></link><published>2020-08-25T20:55:00+02:00</published><updated>2020-08-25T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-08-25:/yipings-blog1.html</id><summary type="html">&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
 &lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
-The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;How to Create a Static Page on Github&lt;/h1&gt;
-&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.&lt;/p&gt;
+&lt;h2&gt;Step 2: Install Pelican&lt;/h2&gt;
+&lt;p&gt;Install Pelican and …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
 &lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
 The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.&lt;/p&gt;
 &lt;h2&gt;Step 2: Install Pelican&lt;/h2&gt;
