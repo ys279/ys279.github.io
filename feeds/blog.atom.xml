@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio - blog</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-10-07T20:55:00+02:00</updated><entry><title>SQLite3 schema to store Spotify Song data in 3NF</title><link href="http://ys279.github.io/sqlite3-schema-to-store-spotify-song-data-in-3nf.html" rel="alternate"></link><published>2020-10-07T20:55:00+02:00</published><updated>2020-10-07T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-10-07:/sqlite3-schema-to-store-spotify-song-data-in-3nf.html</id><summary type="html">&lt;p&gt;Create a SQLite3 schema to store this data in  3rd normal form (3NF), and populate the tables. Use an SQL query to find the names of all playlists that contain instrumentals. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio - blog</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-10-07T20:55:00+02:00</updated><subtitle>Welcome to Yiping website</subtitle><entry><title>SQLite3 schema to store Spotify Song data in 3NF</title><link href="http://ys279.github.io/sqlite3-schema-to-store-spotify-song-data-in-3nf.html" rel="alternate"></link><published>2020-10-07T20:55:00+02:00</published><updated>2020-10-07T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-10-07:/sqlite3-schema-to-store-spotify-song-data-in-3nf.html</id><summary type="html">&lt;p&gt;Create a SQLite3 schema to store this data in  3rd normal form (3NF), and populate the tables. Use an SQL query to find the names of all playlists that contain instrumentals. &lt;/p&gt;
 &lt;h2&gt;Download and baic info of  Spotify Song data&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
@@ -1641,19 +1641,12 @@ Mainly deal with playlist table&lt;/p&gt;
 
 &lt;h3&gt;Total number of the playlist names  that contain instrumentals is 256.&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>Yiping's Blog3</title><link href="http://ys279.github.io/yipings-blog3.html" rel="alternate"></link><published>2020-09-20T20:55:00+02:00</published><updated>2020-09-20T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-20:/yipings-blog3.html</id><summary type="html">&lt;h2&gt;Download Data&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;pd1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths_age.csv&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;pd2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_inc.csv&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;pd3 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Download Data&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>Informative Visualizations about Malaria</title><link href="http://ys279.github.io/informative-visualizations-about-malaria.html" rel="alternate"></link><published>2020-09-20T20:55:00+02:00</published><updated>2020-09-20T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-20:/informative-visualizations-about-malaria.html</id><summary type="html">&lt;p&gt;Create  informative visualizations about malaria using Python 
+Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;h2&gt;Download Data&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Create  informative visualizations about malaria using Python 
+Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;h2&gt;Download Data&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;pd1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -1806,9 +1799,12 @@ Mainly deal with playlist table&lt;/p&gt;
 
 
 &lt;p&gt;&lt;img alt="Pelican" src="../images/output_20_0.png"&gt;&lt;/p&gt;
-&lt;h2&gt;From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest&lt;/h2&gt;</content><category term="blog"></category></entry><entry><title>Yiping's Blog2</title><link href="http://ys279.github.io/yipings-blog2.html" rel="alternate"></link><published>2020-09-10T20:55:00+02:00</published><updated>2020-09-10T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-10:/yipings-blog2.html</id><summary type="html">&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
-&lt;h3&gt;It is well known that if the square root of a natural number is not an integer, then it is irrational. The decimal expansion of such square roots is infinite without any repeating pattern at all.&lt;/h3&gt;
-&lt;h3&gt;The square root of two …&lt;/h3&gt;</summary><content type="html">&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
+&lt;h2&gt;From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest&lt;/h2&gt;</content><category term="blog"></category></entry><entry><title>Solutions to Eluer Project</title><link href="http://ys279.github.io/solutions-to-eluer-project.html" rel="alternate"></link><published>2020-09-10T20:55:00+02:00</published><updated>2020-09-10T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-10:/solutions-to-eluer-project.html</id><summary type="html">&lt;p&gt;Solution to selected Eluer Problems   &lt;/p&gt;
+&lt;p&gt;Project Euler  is a website dedicated to a series of computational problems intended to be solved with computer programs.The project attracts adults and students interested in mathematics and computer programming.&lt;/p&gt;
+&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
+&lt;h3&gt;It is well known that …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Solution to selected Eluer Problems   &lt;/p&gt;
+&lt;p&gt;Project Euler  is a website dedicated to a series of computational problems intended to be solved with computer programs.The project attracts adults and students interested in mathematics and computer programming.&lt;/p&gt;
+&lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
 &lt;h3&gt;It is well known that if the square root of a natural number is not an integer, then it is irrational. The decimal expansion of such square roots is infinite without any repeating pattern at all.&lt;/h3&gt;
 &lt;h3&gt;The square root of two is 1.41421356237309504880..., and the digital sum of the first one hundred decimal digits is 475.&lt;/h3&gt;
 &lt;h3&gt;For the first one hundred natural numbers, find the total of the digital sums of the first one hundred decimal digits for all the irrational square roots.&lt;/h3&gt;
@@ -1897,11 +1893,11 @@ Then get the product and determine if it reads the same both ways use:&lt;/p&gt;
 
 
 &lt;p&gt;to get the largest one.  &lt;/p&gt;
-&lt;p&gt;And then run function large_palindromic(999,99) can get the answer.  &lt;/p&gt;</content><category term="blog"></category></entry><entry><title>Yiping's Blog1</title><link href="http://ys279.github.io/yipings-blog1.html" rel="alternate"></link><published>2020-08-25T20:55:00+02:00</published><updated>2020-08-25T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-08-25:/yipings-blog1.html</id><summary type="html">&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+&lt;p&gt;And then run function large_palindromic(999,99) can get the answer.  &lt;/p&gt;</content><category term="blog"></category></entry><entry><title>How to Create a Static Page on Github</title><link href="http://ys279.github.io/how-to-create-a-static-page-on-github.html" rel="alternate"></link><published>2020-08-25T20:55:00+02:00</published><updated>2020-08-25T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-08-25:/how-to-create-a-static-page-on-github.html</id><summary type="html">&lt;p&gt;This blog mainly talk about how to start a personal website on gitHub pages use pelican. &lt;/p&gt;
+&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
 &lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
-The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.&lt;/p&gt;
-&lt;h2&gt;Step 2: Install Pelican&lt;/h2&gt;
-&lt;p&gt;Install Pelican and …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This blog mainly talk about how to start a personal website on gitHub pages use pelican. &lt;/p&gt;
+&lt;h2&gt;Step 1: Set up github.io page&lt;/h2&gt;
 &lt;p&gt;Create two new repositories: ys279.github.io-src and ys279.github.io.
 The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.&lt;/p&gt;
 &lt;h2&gt;Step 2: Install Pelican&lt;/h2&gt;

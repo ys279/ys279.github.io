@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-        <meta charset="utf-8">
+            <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Data Science Portfolio - Archives</title>
+        <title>Data Science Portfolio</title>
 
 
         <!-- Bootstrap Core CSS -->
@@ -32,8 +32,21 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-		<meta property="og:locale" content="en">
+
+
+
+
+
+			<meta property="og:locale" content="en">
 		<meta property="og:site_name" content="Data Science Portfolio">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="/how-to-create-a-static-page-on-github.html">
+	<meta property="og:title" content="How to Create a Static Page on Github">
+	<meta property="og:description" content="Yiping's Blog1">
+	<meta property="og:image" content="/">
+	<meta property="article:published_time" content="2020-08-25 20:55:00+02:00">
 </head>
 
 <body>
@@ -64,12 +77,18 @@
     </nav>
 
     <!-- Page Header -->
-        <header class="intro-header" style="background-image: url('/theme/images/home-bg.jpg')">
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Archives for Data Science Portfolio</h1>
+                        <h1>How to Create a Static Page on Github</h1>
+                            <h3 class="subheading">Yiping's Blog1</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/yiping.html">Yiping</a>
+                             on Tue 25 August 2020
+                        </span>
+                        
                     </div>
                 </div>
             </div>
@@ -80,17 +99,75 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-    <dl>
-            <dt>Wed 07 October 2020</dt>
-            <dd><a href="/sqlite3-schema-to-store-spotify-song-data-in-3nf.html">SQLite3 schema to store Spotify Song data  in 3NF</a></dd>
-            <dt>Sun 20 September 2020</dt>
-            <dd><a href="/informative-visualizations-about-malaria.html">Informative Visualizations about Malaria</a></dd>
-            <dt>Thu 10 September 2020</dt>
-            <dd><a href="/solutions-to-eluer-project.html">Solutions to Eluer Project</a></dd>
-            <dt>Tue 25 August 2020</dt>
-            <dd><a href="/how-to-create-a-static-page-on-github.html">How to Create a Static Page on Github</a></dd>
-        <hr>
-    </dl>
+    <!-- Post Content -->
+    <article>
+        <p>This blog mainly talk about how to start a personal website on gitHub pages use pelican. </p>
+<h2>Step 1: Set up github.io page</h2>
+<p>Create two new repositories: ys279.github.io-src and ys279.github.io.
+The ys279.github.io-src repository will hold the sources of blog and the ys279.github.io repository will contain the output HTML files Pelican generates.</p>
+<h2>Step 2: Install Pelican</h2>
+<p>Install Pelican and Markdown by running the following command :  </p>
+<div class="highlight"><pre><span></span><code><span class="err">pip install pelican </span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">pip install pelican markdown</span>
+</code></pre></div>
+
+
+<p>Then Clone the source repository and change directory to the site:</p>
+<div class="highlight"><pre><span></span><code><span class="err">git clone https://github.com/ys279/ys279.github.io-src/tree/master ss</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">cd ss</span>
+</code></pre></div>
+
+
+<h2>Step 3: Create a Blog</h2>
+<p>Clone the output repository as a git submodule :</p>
+<div class="highlight"><pre><span></span><code><span class="err">git submodule add https://github.com/ys279/ys279.github.io output</span>
+</code></pre></div>
+
+
+<p>Then Create a skeleton project via the pelican-quickstart command, and give the answer 
+URL prefix: http://ys279.github.io  </p>
+<p>Write a .md file(Blog1.md) in content folder as the first blog.
+Also can change the site theme with pelican theme.</p>
+<h2>Step 4 :Generate my site, commit and push</h2>
+<p>From my site directory, run the pelican command to generate site:</p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican content</span>
+</code></pre></div>
+
+
+<p>test result using:</p>
+<div class="highlight"><pre><span></span><code><span class="err">make serve</span>
+</code></pre></div>
+
+
+<p>and point browser to localhost:8000</p>
+<p>If  everything is OK, generate the website:</p>
+<div class="highlight"><pre><span></span><code><span class="err">make publish</span>
+</code></pre></div>
+
+
+<p>Then add  files to git tracking, commit them, and push to the repositories. </p>
+<div class="highlight"><pre><span></span><code><span class="err">cd output</span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;Final post.&quot;</span>
+<span class="err">git pull</span>
+<span class="err">echo &#39;*.pyc&#39; &gt;&gt; .gitignore </span>
+<span class="err">git add .</span>
+<span class="err">git commit -m &quot;First commit.&quot;</span>
+<span class="err">git push -u origin master</span>
+</code></pre></div>
+
+
+<p>Now, you can visit the https://ys279.github.io and see the new site I’ve created.</p>
+    </article>
+
+    <hr>
+
             </div>
         </div>
     </div>
