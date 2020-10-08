@@ -1641,11 +1641,13 @@ Mainly deal with playlist table&lt;/p&gt;
 
 &lt;h3&gt;Total number of the playlist names  that contain instrumentals is 256.&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>Informative Visualizations about Malaria</title><link href="http://ys279.github.io/informative-visualizations-about-malaria.html" rel="alternate"></link><published>2020-09-20T20:55:00+02:00</published><updated>2020-09-20T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-20:/informative-visualizations-about-malaria.html</id><summary type="html">&lt;p&gt;Create  informative visualizations about malaria using Python 
-Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blog"></category></entry><entry><title>Informative Visualizations about Malaria</title><link href="http://ys279.github.io/informative-visualizations-about-malaria.html" rel="alternate"></link><published>2020-09-20T20:55:00+02:00</published><updated>2020-09-20T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-20:/informative-visualizations-about-malaria.html</id><summary type="html">&lt;p&gt;Create  informative visualizations about malaria using Python  &lt;/p&gt;
+&lt;p&gt;Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican" src="../images/ma.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Download Data&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Create  informative visualizations about malaria using Python 
-Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Create  informative visualizations about malaria using Python  &lt;/p&gt;
+&lt;p&gt;Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican" src="../images/ma.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Download Data&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;pd1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1666,7 +1668,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;First  visualization about malaria_death Data&lt;/h2&gt;
+&lt;h2&gt;visualization about malaria_death&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pd1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plot&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;scatter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
     &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
@@ -1678,8 +1680,8 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 &lt;p&gt;&lt;img alt="Pelican" src="../images/1.png"&gt;&lt;/p&gt;
-&lt;h2&gt;From this plot, we can see most of the country have the trend of  coming down for death rate from 1990 to 2015. (detailed plot shown in uploaded ipynb file in homework3.&lt;/h2&gt;
-&lt;h2&gt;Deal with malaria_deaths_age dataset&lt;/h2&gt;
+&lt;h3&gt;From this plot, we can see most of the country have the trend of  coming down for death rate from 1990 to 2015. (detailed dynamic plot shown in uploaded ipynb file in github.)&lt;/h3&gt;
+&lt;h3&gt;Deal with malaria_deaths_age dataset&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pd2&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mean&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nan&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1705,7 +1707,9 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h2&gt;Second visualization about malaria_deaths_age dataset&lt;/h2&gt;
+&lt;h2&gt;visualization of malaria_deaths rate  in world map&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Pelican" src="../images/map.png"&gt;&lt;/p&gt;
+&lt;h2&gt;visualization about malaria_deaths_age&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;df22&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;age_group&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
            &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df22&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df22&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;age_group&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
            &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort_values&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mean&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ascending&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -1717,7 +1721,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 &lt;p&gt;&lt;img alt="Pelican" src="../images/output_15_0.png"&gt;&lt;/p&gt;
-&lt;h2&gt;From this plot, we can see Sub-Saharan Afraica always have highest death from 1990 to 2016. And age Under5 have the greatest death amount.&lt;/h2&gt;
+&lt;h3&gt;From above plot, we can see Sub-Saharan Afraica always have highest death rate  from 1990 to 2016. And age Under5 have the greatest death amount.&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;plotting&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backend&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;plotly&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1790,7 +1794,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 &lt;/table&gt;
 &lt;/div&gt;
 
-&lt;h2&gt;Third visualization about malaria_in dataset&lt;/h2&gt;
+&lt;h2&gt;visualization about malaria_inc&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xkcd&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lineplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;pd3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Entity&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Incidence of malaria (per 1,000 population at risk) (per 1,000 population at risk)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;hue&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Year&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_title&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Incident of malaria&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1799,7 +1803,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 &lt;p&gt;&lt;img alt="Pelican" src="../images/output_20_0.png"&gt;&lt;/p&gt;
-&lt;h2&gt;From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest&lt;/h2&gt;</content><category term="blog"></category></entry><entry><title>Solutions to Eluer Project</title><link href="http://ys279.github.io/solutions-to-eluer-project.html" rel="alternate"></link><published>2020-09-10T20:55:00+02:00</published><updated>2020-09-10T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-10:/solutions-to-eluer-project.html</id><summary type="html">&lt;p&gt;Solution to selected Eluer Problems   &lt;/p&gt;
+&lt;h3&gt;From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest&lt;/h3&gt;</content><category term="blog"></category></entry><entry><title>Solutions to Eluer Project</title><link href="http://ys279.github.io/solutions-to-eluer-project.html" rel="alternate"></link><published>2020-09-10T20:55:00+02:00</published><updated>2020-09-10T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-09-10:/solutions-to-eluer-project.html</id><summary type="html">&lt;p&gt;Solution to selected Eluer Problems   &lt;/p&gt;
 &lt;p&gt;Project Euler  is a website dedicated to a series of computational problems intended to be solved with computer programs.The project attracts adults and students interested in mathematics and computer programming.&lt;/p&gt;
 &lt;h2&gt;1.Solve fewer than 25,000 people:Problem 80&lt;/h2&gt;
 &lt;h3&gt;It is well known that …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;Solution to selected Eluer Problems   &lt;/p&gt;

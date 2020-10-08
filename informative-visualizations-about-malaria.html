@@ -103,6 +103,7 @@
     <article>
         <p>Create  informative visualizations about malaria using Python 
 Malaria is a serious and sometimes fatal disease caused by a parasite that commonly infects a certain type of mosquito which feeds on humans. Using python to visualize malaria distribution and malaria death</p>
+<p><img alt="Pelican" src="../images/ma.png"></p>
 <h2>Download Data</h2>
 <div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-11-13/malaria_deaths.csv&#39;</span>
 <span class="n">pd1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -123,7 +124,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 </code></pre></div>
 
 
-<h2>First  visualization about malaria_death Data</h2>
+<h2>visualization about malaria_death</h2>
 <div class="highlight"><pre><span></span><code><span class="n">pd1</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> 
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Deaths - Malaria - Sex: Both - Age: Age-standardized (Rate) (per 100,000 people)&#39;</span><span class="p">,</span> 
@@ -135,8 +136,8 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 <p><img alt="Pelican" src="../images/1.png"></p>
-<h2>From this plot, we can see most of the country have the trend of  coming down for death rate from 1990 to 2015. (detailed plot shown in uploaded ipynb file in homework3.</h2>
-<h2>Deal with malaria_deaths_age dataset</h2>
+<h3>From this plot, we can see most of the country have the trend of  coming down for death rate from 1990 to 2015. (detailed dynamic plot shown in uploaded ipynb file in github.)</h3>
+<h3>Deal with malaria_deaths_age dataset</h3>
 <div class="highlight"><pre><span></span><code><span class="n">pd2</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </code></pre></div>
 
@@ -162,7 +163,9 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 </code></pre></div>
 
 
-<h2>Second visualization about malaria_deaths_age dataset</h2>
+<h2>visualization of malaria_deaths rate  in world map</h2>
+<p><img alt="Pelican" src="../images/map.png"></p>
+<h2>visualization about malaria_deaths_age</h2>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">df22</span><span class="p">[</span><span class="s1">&#39;age_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
            <span class="n">x</span> <span class="o">=</span> <span class="n">df22</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df22</span><span class="p">[</span><span class="s1">&#39;age_group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">age</span><span class="p">]</span>
            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
@@ -174,7 +177,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 <p><img alt="Pelican" src="../images/output_15_0.png"></p>
-<h2>From this plot, we can see Sub-Saharan Afraica always have highest death from 1990 to 2016. And age Under5 have the greatest death amount.</h2>
+<h3>From above plot, we can see Sub-Saharan Afraica always have highest death rate  from 1990 to 2016. And age Under5 have the greatest death amount.</h3>
 <div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="s1">&#39;plotly&#39;</span>
 </code></pre></div>
 
@@ -247,7 +250,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 </table>
 </div>
 
-<h2>Third visualization about malaria_in dataset</h2>
+<h2>visualization about malaria_inc</h2>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">():</span>
     <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pd3</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Entity&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Incidence of malaria (per 1,000 population at risk) (per 1,000 population at risk)&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
     <span class="n">g</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Incident of malaria&#39;</span><span class="p">)</span>
@@ -256,7 +259,7 @@ Malaria is a serious and sometimes fatal disease caused by a parasite that commo
 
 
 <p><img alt="Pelican" src="../images/output_20_0.png"></p>
-<h2>From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest</h2>
+<h3>From this plot, we can see the incidence of malaria decrease from 2000 to 2015. The line for 2000 is the highest and line for 2015 is the lowest</h3>
     </article>
 
     <hr>
