@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Data Science Portfolio</title>
+
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+
+
+			<meta property="og:locale" content="en">
+		<meta property="og:site_name" content="Data Science Portfolio">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="/download-and-extract-starwars-information.html">
+	<meta property="og:title" content="Download and extract Starwars information">
+	<meta property="og:description" content="Yiping's Blog 5">
+	<meta property="og:image" content="/">
+	<meta property="article:published_time" content="2020-10-22 20:55:00+02:00">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Data Science Portfolio</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Download and extract Starwars information</h1>
+                            <h3 class="subheading">Yiping's Blog 5</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/yiping.html">Yiping</a>
+                             on Thu 22 October 2020
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <p>Using the requests library, download all the people in the Star Wars universe using the Star Wars API (https://swapi.dev/documentation). Show the name of the oldest person and list the titles of all the films they appeared.</p>
+<p><img alt="Pelican" src="../images/2.png"></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
+
+
+<h2>First step is to check the info of the data</h2>
+<div class="highlight"><pre><span></span><code><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;http://swapi.dev/api/&#39;</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_url</span><span class="p">,</span> <span class="s1">&#39;people&#39;</span><span class="p">))</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">82</span>
+</code></pre></div>
+
+
+<p>We found that there are 82 Star Wars characters in the dataset, but find there may some missing vaules in the dataset.</p>
+<div class="highlight"><pre><span></span><code><span class="n">people1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://swapi.dev/api/people/1&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">people1</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="n">people3</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://swapi.dev/api/people/3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">people3</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">200</span>
+<span class="err">200</span>
+</code></pre></div>
+
+
+<p>For a successful request, the status code is 200,and we can find which is not 200 to find out the unsuccessful request and  also use  loop to append each successful record .</p>
+<div class="highlight"><pre><span></span><code><span class="n">people</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">people</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">82</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://swapi.dev/api/people/</span><span class="si">{}</span><span class="s1">/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">people</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+</code></pre></div>
+
+
+<h2>Then convert this to a panda Dataframe</h2>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">people</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>height</th>
+      <th>mass</th>
+      <th>hair_color</th>
+      <th>skin_color</th>
+      <th>eye_color</th>
+      <th>birth_year</th>
+      <th>gender</th>
+      <th>homeworld</th>
+      <th>films</th>
+      <th>species</th>
+      <th>vehicles</th>
+      <th>starships</th>
+      <th>created</th>
+      <th>edited</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Luke Skywalker</td>
+      <td>172</td>
+      <td>77</td>
+      <td>blond</td>
+      <td>fair</td>
+      <td>blue</td>
+      <td>19BBY</td>
+      <td>male</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/vehicles/14/, http://swa...</td>
+      <td>[http://swapi.dev/api/starships/12/, http://sw...</td>
+      <td>2014-12-09T13:50:51.644000Z</td>
+      <td>2014-12-20T21:17:56.891000Z</td>
+      <td>http://swapi.dev/api/people/1/</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C-3PO</td>
+      <td>167</td>
+      <td>75</td>
+      <td>n/a</td>
+      <td>gold</td>
+      <td>yellow</td>
+      <td>112BBY</td>
+      <td>n/a</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[http://swapi.dev/api/species/2/]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:10:51.357000Z</td>
+      <td>2014-12-20T21:17:50.309000Z</td>
+      <td>http://swapi.dev/api/people/2/</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>R2-D2</td>
+      <td>96</td>
+      <td>32</td>
+      <td>n/a</td>
+      <td>white, blue</td>
+      <td>red</td>
+      <td>33BBY</td>
+      <td>n/a</td>
+      <td>http://swapi.dev/api/planets/8/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[http://swapi.dev/api/species/2/]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:11:50.376000Z</td>
+      <td>2014-12-20T21:17:50.311000Z</td>
+      <td>http://swapi.dev/api/people/3/</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Darth Vader</td>
+      <td>202</td>
+      <td>136</td>
+      <td>none</td>
+      <td>white</td>
+      <td>yellow</td>
+      <td>41.9BBY</td>
+      <td>male</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/starships/13/]</td>
+      <td>2014-12-10T15:18:20.704000Z</td>
+      <td>2014-12-20T21:17:50.313000Z</td>
+      <td>http://swapi.dev/api/people/4/</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Leia Organa</td>
+      <td>150</td>
+      <td>49</td>
+      <td>brown</td>
+      <td>light</td>
+      <td>brown</td>
+      <td>19BBY</td>
+      <td>female</td>
+      <td>http://swapi.dev/api/planets/2/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/vehicles/30/]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:20:09.791000Z</td>
+      <td>2014-12-20T21:17:50.315000Z</td>
+      <td>http://swapi.dev/api/people/5/</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">(82, 16)</span>
+</code></pre></div>
+
+
+<p>So finish downloading all 82 people in the Star Wars universe using the Star Wars API</p>
+<h2>Next step :Show the name of the oldest person and list the titles of all the films they appeared.</h2>
+<p>Use the birth year to show who is the oldest,we found in people description that The birth year of the person, using the in-universe standard of BBY or ABY - Before the Battle of Yavin or After the Battle of Yavin. So if we want to find the oldest people, we have to find the people with BBY and largest number.</p>
+<p>first deal with na</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s2">&quot;birth_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;birth_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;unknown&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>extract people with birth year contain BBY , and we have to find a way to find the largest number with BBY. If we delete BBY and only count the number would be easier</p>
+<div class="highlight"><pre><span></span><code><span class="n">BBY</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;birth_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;BBY&quot;</span><span class="p">)]</span>
+<span class="n">BBY</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>height</th>
+      <th>mass</th>
+      <th>hair_color</th>
+      <th>skin_color</th>
+      <th>eye_color</th>
+      <th>birth_year</th>
+      <th>gender</th>
+      <th>homeworld</th>
+      <th>films</th>
+      <th>species</th>
+      <th>vehicles</th>
+      <th>starships</th>
+      <th>created</th>
+      <th>edited</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Luke Skywalker</td>
+      <td>172</td>
+      <td>77</td>
+      <td>blond</td>
+      <td>fair</td>
+      <td>blue</td>
+      <td>19BBY</td>
+      <td>male</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/vehicles/14/, http://swa...</td>
+      <td>[http://swapi.dev/api/starships/12/, http://sw...</td>
+      <td>2014-12-09T13:50:51.644000Z</td>
+      <td>2014-12-20T21:17:56.891000Z</td>
+      <td>http://swapi.dev/api/people/1/</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C-3PO</td>
+      <td>167</td>
+      <td>75</td>
+      <td>n/a</td>
+      <td>gold</td>
+      <td>yellow</td>
+      <td>112BBY</td>
+      <td>n/a</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[http://swapi.dev/api/species/2/]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:10:51.357000Z</td>
+      <td>2014-12-20T21:17:50.309000Z</td>
+      <td>http://swapi.dev/api/people/2/</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>R2-D2</td>
+      <td>96</td>
+      <td>32</td>
+      <td>n/a</td>
+      <td>white, blue</td>
+      <td>red</td>
+      <td>33BBY</td>
+      <td>n/a</td>
+      <td>http://swapi.dev/api/planets/8/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[http://swapi.dev/api/species/2/]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:11:50.376000Z</td>
+      <td>2014-12-20T21:17:50.311000Z</td>
+      <td>http://swapi.dev/api/people/3/</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Darth Vader</td>
+      <td>202</td>
+      <td>136</td>
+      <td>none</td>
+      <td>white</td>
+      <td>yellow</td>
+      <td>41.9BBY</td>
+      <td>male</td>
+      <td>http://swapi.dev/api/planets/1/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/starships/13/]</td>
+      <td>2014-12-10T15:18:20.704000Z</td>
+      <td>2014-12-20T21:17:50.313000Z</td>
+      <td>http://swapi.dev/api/people/4/</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Leia Organa</td>
+      <td>150</td>
+      <td>49</td>
+      <td>brown</td>
+      <td>light</td>
+      <td>brown</td>
+      <td>19BBY</td>
+      <td>female</td>
+      <td>http://swapi.dev/api/planets/2/</td>
+      <td>[http://swapi.dev/api/films/1/, http://swapi.d...</td>
+      <td>[]</td>
+      <td>[http://swapi.dev/api/vehicles/30/]</td>
+      <td>[]</td>
+      <td>2014-12-10T15:20:09.791000Z</td>
+      <td>2014-12-20T21:17:50.315000Z</td>
+      <td>http://swapi.dev/api/people/5/</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><code><span class="n">BBY</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;birth_year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BBY</span><span class="p">[</span><span class="s1">&#39;birth_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;BBY&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">BBY</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;birth_year&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>height</th>
+      <th>mass</th>
+      <th>hair_color</th>
+      <th>skin_color</th>
+      <th>eye_color</th>
+      <th>birth_year</th>
+      <th>gender</th>
+      <th>homeworld</th>
+      <th>films</th>
+      <th>species</th>
+      <th>vehicles</th>
+      <th>starships</th>
+      <th>created</th>
+      <th>edited</th>
+      <th>url</th>
+      <th>yearnum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18</th>
+      <td>Yoda</td>
+      <td>66</td>
+      <td>17</td>
+      <td>white</td>
+      <td>green</td>
+      <td>brown</td>
+      <td>896.0</td>
+      <td>male</td>
+      <td>http://swapi.dev/api/planets/28/</td>
+      <td>[http://swapi.dev/api/films/2/, http://swapi.d...</td>
+      <td>[http://swapi.dev/api/species/6/]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>2014-12-15T12:26:01.042000Z</td>
+      <td>2014-12-20T21:17:50.345000Z</td>
+      <td>http://swapi.dev/api/people/20/</td>
+      <td>896.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>So Yoda is the oldest people</h2>
+<h2>Next step is find the titles of all the films Yoda appeared.</h2>
+<p>we can look into the film info by request the film api in the dataframe</p>
+<div class="highlight"><pre><span></span><code><span class="n">yoda</span> <span class="o">=</span> <span class="n">BBY_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">films</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">film_url</span> <span class="o">=</span> <span class="p">[</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">film</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="k">for</span> <span class="n">film</span> <span class="ow">in</span> <span class="n">yoda</span><span class="p">]</span>
+<span class="n">films</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">film_url</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">films</span><span class="o">.</span><span class="n">title</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">0    The Empire Strikes Back</span>
+<span class="err">1         Return of the Jedi</span>
+<span class="err">2         The Phantom Menace</span>
+<span class="err">3       Attack of the Clones</span>
+<span class="err">4        Revenge of the Sith</span>
+<span class="c">Name: title, dtype: object</span>
+</code></pre></div>
+
+
+<p>Above is the list of film titles that Yoda appears in.</p>
+    </article>
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Blog powered by <a href="http://getpelican.com">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

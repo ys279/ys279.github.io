@@ -1,5 +1,455 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio - blog</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-10-07T20:55:00+02:00</updated><subtitle>Welcome to Yiping website</subtitle><entry><title>SQLite3 schema to store Spotify Song data in 3NF</title><link href="http://ys279.github.io/sqlite3-schema-to-store-spotify-song-data-in-3nf.html" rel="alternate"></link><published>2020-10-07T20:55:00+02:00</published><updated>2020-10-07T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-10-07:/sqlite3-schema-to-store-spotify-song-data-in-3nf.html</id><summary type="html">&lt;p&gt;Create a SQLite3 schema to store this data in  3rd normal form (3NF), and populate the tables. Use an SQL query to find the names of all playlists that contain instrumentals. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Data Science Portfolio - blog</title><link href="http://ys279.github.io/" rel="alternate"></link><link href="http://ys279.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://ys279.github.io/</id><updated>2020-10-22T20:55:00+02:00</updated><subtitle>Welcome to Yiping website</subtitle><entry><title>Download and extract Starwars information</title><link href="http://ys279.github.io/download-and-extract-starwars-information.html" rel="alternate"></link><published>2020-10-22T20:55:00+02:00</published><updated>2020-10-22T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-10-22:/download-and-extract-starwars-information.html</id><summary type="html">&lt;p&gt;Using the requests library, download all the people in the Star Wars universe using the Star Wars API (https://swapi.dev/documentation). Show the name of the oldest person and list the titles of all the films they appeared.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican" src="../images/2.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Using the requests library, download all the people in the Star Wars universe using the Star Wars API (https://swapi.dev/documentation). Show the name of the oldest person and list the titles of all the films they appeared.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Pelican" src="../images/2.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;First step is to check the info of the data&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;base_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://swapi.dev/api/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;resp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;base_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;people&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;count&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;82&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We found that there are 82 Star Wars characters in the dataset, but find there may some missing vaules in the dataset.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;people1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://swapi.dev/api/people/1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;people1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;people3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://swapi.dev/api/people/3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;people3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;200&lt;/span&gt;
+&lt;span class="err"&gt;200&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For a successful request, the status code is 200,and we can find which is not 200 to find out the unsuccessful request and  also use  loop to append each successful record .&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;people&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;people&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;82&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://swapi.dev/api/people/&lt;/span&gt;&lt;span class="si"&gt;{}&lt;/span&gt;&lt;span class="s1"&gt;/&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;people&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Then convert this to a panda Dataframe&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;people&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;hair_color&lt;/th&gt;
+      &lt;th&gt;skin_color&lt;/th&gt;
+      &lt;th&gt;eye_color&lt;/th&gt;
+      &lt;th&gt;birth_year&lt;/th&gt;
+      &lt;th&gt;gender&lt;/th&gt;
+      &lt;th&gt;homeworld&lt;/th&gt;
+      &lt;th&gt;films&lt;/th&gt;
+      &lt;th&gt;species&lt;/th&gt;
+      &lt;th&gt;vehicles&lt;/th&gt;
+      &lt;th&gt;starships&lt;/th&gt;
+      &lt;th&gt;created&lt;/th&gt;
+      &lt;th&gt;edited&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Luke Skywalker&lt;/td&gt;
+      &lt;td&gt;172&lt;/td&gt;
+      &lt;td&gt;77&lt;/td&gt;
+      &lt;td&gt;blond&lt;/td&gt;
+      &lt;td&gt;fair&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;19BBY&lt;/td&gt;
+      &lt;td&gt;male&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/vehicles/14/, http://swa...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/starships/12/, http://sw...&lt;/td&gt;
+      &lt;td&gt;2014-12-09T13:50:51.644000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:56.891000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/1/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;C-3PO&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+      &lt;td&gt;75&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;gold&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;112BBY&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/species/2/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:10:51.357000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.309000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/2/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;R2-D2&lt;/td&gt;
+      &lt;td&gt;96&lt;/td&gt;
+      &lt;td&gt;32&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;white, blue&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;33BBY&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/8/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/species/2/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:11:50.376000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.311000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/3/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Darth Vader&lt;/td&gt;
+      &lt;td&gt;202&lt;/td&gt;
+      &lt;td&gt;136&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+      &lt;td&gt;white&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;41.9BBY&lt;/td&gt;
+      &lt;td&gt;male&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/starships/13/]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:18:20.704000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.313000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/4/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Leia Organa&lt;/td&gt;
+      &lt;td&gt;150&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;light&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;19BBY&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/2/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/vehicles/30/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:20:09.791000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.315000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/5/&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(82, 16)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So finish downloading all 82 people in the Star Wars universe using the Star Wars API&lt;/p&gt;
+&lt;h2&gt;Next step :Show the name of the oldest person and list the titles of all the films they appeared.&lt;/h2&gt;
+&lt;p&gt;Use the birth year to show who is the oldest,we found in people description that The birth year of the person, using the in-universe standard of BBY or ABY - Before the Battle of Yavin or After the Battle of Yavin. So if we want to find the oldest people, we have to find the people with BBY and largest number.&lt;/p&gt;
+&lt;p&gt;first deal with na&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;birth_year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;birth_year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fillna&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;unknown&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;extract people with birth year contain BBY , and we have to find a way to find the largest number with BBY. If we delete BBY and only count the number would be easier&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;BBY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;birth_year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;contains&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;BBY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="n"&gt;BBY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;hair_color&lt;/th&gt;
+      &lt;th&gt;skin_color&lt;/th&gt;
+      &lt;th&gt;eye_color&lt;/th&gt;
+      &lt;th&gt;birth_year&lt;/th&gt;
+      &lt;th&gt;gender&lt;/th&gt;
+      &lt;th&gt;homeworld&lt;/th&gt;
+      &lt;th&gt;films&lt;/th&gt;
+      &lt;th&gt;species&lt;/th&gt;
+      &lt;th&gt;vehicles&lt;/th&gt;
+      &lt;th&gt;starships&lt;/th&gt;
+      &lt;th&gt;created&lt;/th&gt;
+      &lt;th&gt;edited&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;0&lt;/th&gt;
+      &lt;td&gt;Luke Skywalker&lt;/td&gt;
+      &lt;td&gt;172&lt;/td&gt;
+      &lt;td&gt;77&lt;/td&gt;
+      &lt;td&gt;blond&lt;/td&gt;
+      &lt;td&gt;fair&lt;/td&gt;
+      &lt;td&gt;blue&lt;/td&gt;
+      &lt;td&gt;19BBY&lt;/td&gt;
+      &lt;td&gt;male&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/vehicles/14/, http://swa...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/starships/12/, http://sw...&lt;/td&gt;
+      &lt;td&gt;2014-12-09T13:50:51.644000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:56.891000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/1/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;1&lt;/th&gt;
+      &lt;td&gt;C-3PO&lt;/td&gt;
+      &lt;td&gt;167&lt;/td&gt;
+      &lt;td&gt;75&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;gold&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;112BBY&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/species/2/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:10:51.357000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.309000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/2/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;2&lt;/th&gt;
+      &lt;td&gt;R2-D2&lt;/td&gt;
+      &lt;td&gt;96&lt;/td&gt;
+      &lt;td&gt;32&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;white, blue&lt;/td&gt;
+      &lt;td&gt;red&lt;/td&gt;
+      &lt;td&gt;33BBY&lt;/td&gt;
+      &lt;td&gt;n/a&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/8/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/species/2/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:11:50.376000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.311000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/3/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;3&lt;/th&gt;
+      &lt;td&gt;Darth Vader&lt;/td&gt;
+      &lt;td&gt;202&lt;/td&gt;
+      &lt;td&gt;136&lt;/td&gt;
+      &lt;td&gt;none&lt;/td&gt;
+      &lt;td&gt;white&lt;/td&gt;
+      &lt;td&gt;yellow&lt;/td&gt;
+      &lt;td&gt;41.9BBY&lt;/td&gt;
+      &lt;td&gt;male&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/1/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/starships/13/]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:18:20.704000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.313000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/4/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;4&lt;/th&gt;
+      &lt;td&gt;Leia Organa&lt;/td&gt;
+      &lt;td&gt;150&lt;/td&gt;
+      &lt;td&gt;49&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;light&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;19BBY&lt;/td&gt;
+      &lt;td&gt;female&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/2/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/1/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/vehicles/30/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-10T15:20:09.791000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.315000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/5/&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;BBY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;birth_year&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BBY&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;birth_year&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;str&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;BBY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;astype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;BBY&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sort_values&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;birth_year&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ascending&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;head&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;style scoped&gt;
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+&lt;/style&gt;
+&lt;table border="1" class="dataframe"&gt;
+  &lt;thead&gt;
+    &lt;tr style="text-align: right;"&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;height&lt;/th&gt;
+      &lt;th&gt;mass&lt;/th&gt;
+      &lt;th&gt;hair_color&lt;/th&gt;
+      &lt;th&gt;skin_color&lt;/th&gt;
+      &lt;th&gt;eye_color&lt;/th&gt;
+      &lt;th&gt;birth_year&lt;/th&gt;
+      &lt;th&gt;gender&lt;/th&gt;
+      &lt;th&gt;homeworld&lt;/th&gt;
+      &lt;th&gt;films&lt;/th&gt;
+      &lt;th&gt;species&lt;/th&gt;
+      &lt;th&gt;vehicles&lt;/th&gt;
+      &lt;th&gt;starships&lt;/th&gt;
+      &lt;th&gt;created&lt;/th&gt;
+      &lt;th&gt;edited&lt;/th&gt;
+      &lt;th&gt;url&lt;/th&gt;
+      &lt;th&gt;yearnum&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;18&lt;/th&gt;
+      &lt;td&gt;Yoda&lt;/td&gt;
+      &lt;td&gt;66&lt;/td&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;white&lt;/td&gt;
+      &lt;td&gt;green&lt;/td&gt;
+      &lt;td&gt;brown&lt;/td&gt;
+      &lt;td&gt;896.0&lt;/td&gt;
+      &lt;td&gt;male&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/planets/28/&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/films/2/, http://swapi.d...&lt;/td&gt;
+      &lt;td&gt;[http://swapi.dev/api/species/6/]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;[]&lt;/td&gt;
+      &lt;td&gt;2014-12-15T12:26:01.042000Z&lt;/td&gt;
+      &lt;td&gt;2014-12-20T21:17:50.345000Z&lt;/td&gt;
+      &lt;td&gt;http://swapi.dev/api/people/20/&lt;/td&gt;
+      &lt;td&gt;896.0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h2&gt;So Yoda is the oldest people&lt;/h2&gt;
+&lt;h2&gt;Next step is find the titles of all the films Yoda appeared.&lt;/h2&gt;
+&lt;p&gt;we can look into the film info by request the film api in the dataframe&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;yoda&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BBY_sorted&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iloc&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,:]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;films&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;film_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;film&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;film&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;yoda&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;films&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;film_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;films&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;0    The Empire Strikes Back&lt;/span&gt;
+&lt;span class="err"&gt;1         Return of the Jedi&lt;/span&gt;
+&lt;span class="err"&gt;2         The Phantom Menace&lt;/span&gt;
+&lt;span class="err"&gt;3       Attack of the Clones&lt;/span&gt;
+&lt;span class="err"&gt;4        Revenge of the Sith&lt;/span&gt;
+&lt;span class="c"&gt;Name: title, dtype: object&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Above is the list of film titles that Yoda appears in.&lt;/p&gt;</content><category term="blog"></category></entry><entry><title>SQLite3 schema to store Spotify Song data in 3NF</title><link href="http://ys279.github.io/sqlite3-schema-to-store-spotify-song-data-in-3nf.html" rel="alternate"></link><published>2020-10-07T20:55:00+02:00</published><updated>2020-10-07T20:55:00+02:00</updated><author><name>Yiping</name></author><id>tag:ys279.github.io,2020-10-07:/sqlite3-schema-to-store-spotify-song-data-in-3nf.html</id><summary type="html">&lt;p&gt;Create a SQLite3 schema to store this data in  3rd normal form (3NF), and populate the tables. Use an SQL query to find the names of all playlists that contain instrumentals. &lt;/p&gt;
 &lt;h2&gt;Download and baic info of  Spotify Song data&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
