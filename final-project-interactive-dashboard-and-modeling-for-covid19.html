@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Data Science Portfolio</title>
+
+
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+
+
+			<meta property="og:locale" content="en">
+		<meta property="og:site_name" content="Data Science Portfolio">
+
+	<meta property="og:type" content="article">
+	<meta property="article:author" content="">
+	<meta property="og:url" content="/final-project-interactive-dashboard-and-modeling-for-covid19.html">
+	<meta property="og:title" content="Final Project: Interactive Dashboard and Modeling for Covid19">
+	<meta property="og:description" content="Yiping's Blog 8">
+	<meta property="og:image" content="/">
+	<meta property="article:published_time" content="2020-11-20 20:55:00+01:00">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Data Science Portfolio</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Final Project: Interactive Dashboard and Modeling for Covid19</h1>
+                            <h3 class="subheading">Yiping's Blog 8</h3>
+                        <span class="meta">Posted by
+                                <a href="/author/yiping.html">Yiping</a>
+                             on Fri 20 November 2020
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <h2>Overview</h2>
+<h3>Our work can be seen from  <a href="https://github.com/ys279/BIOSTAT823-Final-Project">github</a> and Streamlit <a href="https://final-covid19-dashboard.herokuapp.com/">Dashboard</a></h3>
+<p>Main objectives:  </p>
+<p>Covid-19 interactive visualization that helps users to understand the information of COVID-19 spread across the world and US, and the current pandemic situation we are facing.    </p>
+<p>Use different machine learning methods to predict confirm cases/death/confirmed cases in a next given period. For this project, we have tried three Model Prediction: SARIMAX model, SVR model, and prophet model. </p>
+<h2>Data Source</h2>
+<p>Data Collection and processing
+For our project, the main data source we use is JHU CSSE Covid-19 repository: https://github.com/CSSEGISandData/COVID-19<br>
+We acquire all data through url and cleaned the data. <br>
+More details are in the folder <a href="https://github.com/ys279/BIOSTAT823-Final-Project/tree/master/data">data</a>  </p>
+<h2>Interactive Dashboard</h2>
+<p>Three are three part for data visualization : Map ,General Trend and Covid in US.  </p>
+<h4>Map</h4>
+<ul>
+<li>Daily updated active cases map worldwide<br>
+<img alt="Pelican" src="../images/ff.png"></li>
+</ul>
+<p>*Daily updated active /death cases map the US </p>
+<p>we specific US death and active cases among each state is US map section.  </p>
+<p><div id="81d3caab-5cf1-4ec7-aa23-72079f812201"></div> 
+<div id="3016be4f-36e9-4cc7-9576-d60897c3c798"></div></p>
+<p>*Case-Fatality ratio map worldwide   <br>
+Case fatality ratio, that estimates this proportion of deaths among identified confirmed cases. As covid-19 is an ongoing pandemic, we decide to follow WHO guidelines to mitigate the bias due to delays during an ongoing outbreak. We calculate it by number of death/(number of death+number of recovered). Also, different to what we have in the global confirmed cases, where we show the data specified to each county, for this part we only specified it to each state, as the county data may be too small to show.  </p>
+<p><div id="18fc33ad-2780-4fea-bd06-15330214ebc2"></div> </p>
+<ul>
+<li>Global spread of covid-19 maps, in which users can select their intrested time range and see the animated spread of COVID-19 across the world. <br>
+we merge confirmed, death, and recovered data into one dataframe, then perform data cleaning due to missing values, wrong datatypes, and cases from cruise ships. Then we plot an animated covid-19 spread map for visualizing the change of confirmed cases overtime. We also put death and recover data on the hover text box, so they can check all three key information all at once. We allow users to choose their preferred date range to check how covid-19 is spread.We think this map is quite intuitive and educating, to illustrate the timeline of how we get from a normal life to now.</li>
+</ul>
+<p><img alt="Pelican" src="../images/spread.png"></p>
+<h4>General Trend</h4>
+<p>For this part, we visualize the country statistic into a more straight way, we selected countries that have highest max infection rate and you can see the cases or rate in each countries.  </p>
+<ul>
+<li>
+<p>plot of top 10 highest max infection cases/rate countries
+<img alt="Pelican" src="../images/h1.png"></p>
+</li>
+<li>
+<p>General death,recover and confirmed cases trend for Covid19
+You can choose any country you want to see in dashboard
+<img alt="Pelican" src="../images/h2.png"></p>
+</li>
+<li>
+<p>General cases or Incident/infection Rate among countries 
+You can choose any country you want to see in dashboard
+<img alt="Pelican" src="../images/rate.png"></p>
+</li>
+</ul>
+<p>And from above plots, we can see  that US has the most severe cases worldwid. So next part will foucus on visualization covid in US. Death and survive rates help us understand the severity of Covid19, identify at-risk populations, and evaluate quality of healthcare in US.   </p>
+<h4>Covid19 in US</h4>
+<ul>
+<li>
+<p>plot of death rates vs. survive rates in US 
+<img alt="Pelican" src="../images/h3.png"><br>
+Note that the Death Rate has stabilized to a fixed rate but it is above zero a lot. We still need to take more actions to reduce mortality. Survive Rate is increasing recently which is a good trend.   </p>
+</li>
+<li>
+<p>plot for confirm cases, death cases, and recover cases in US<br>
+<img alt="Pelican" src="../images/h4.png"><br>
+We can see that the confirmed cases is extremly high which need us to make more attention to this.Though the death cases is not very high, the active cases is still a lot which means we need more health care for this.</p>
+</li>
+</ul>
+<h2>Model Development</h2>
+<p>We have tried three time-series model to predict the number of new cases in a next given period. <br>
+Models included:<br>
+<a href="https://github.com/ys279/BIOSTAT823-Final-Project/blob/master/model/SARIMAX%2BProphet.ipynb">SARIMAX</a>  </p>
+<p><a href="https://github.com/ys279/BIOSTAT823-Final-Project/blob/master/model/SVR%20Model.ipynb">SVR</a>  </p>
+<p><a href="https://github.com/ys279/BIOSTAT823-Final-Project/blob/master/prophet_model.ipynb">Prophet</a>  </p>
+<h3>SARIMAX</h3>
+<p>There are two reasons that we think SARIMAX could be appropriate for the modeling. Frist, due to the property of dataset itself, which is scraped from JHU's repository and only contains date time and the value of dependent variables(confirmed/death cases), using time series models seems to be a reasonable choices. Second, in terms of the global death number, the dataset we are using to build a time series model is actually the daily increase data. This daily increase data is not consistent, but appear periodically, according to one trace plot. Thus, addding seasonality to our model is plausible. In the meantime, the first 3 of these 4 orders of SARIMAX are just seasonal versions of the ARIMA orders, which means we need to find a seasonal autoregressive order denoted by upper-case P, an order of seasonal integration denoted by upper-case D, and a seasonal moving average order signified by upper-case Q. Therefore, after multiple analysis work, we think SARIMAX(5,2,4)(0,0,0)[0] is the most appropriate model for predicting the global COVID-19 death case with MAE being 2347.05.  </p>
+<p><img alt="Pelican" src="../images/s4.png">  </p>
+<h3>SVR</h3>
+<p>We also implementing SVM classification method to predict covid worldwide as a whole . We apply this method to capture the predictor non-linearity and to improve the forecasting cases. In our case, we adopted polynomial kernel and use date as variables. we can see from the plot svm model is a good prediction model for predict all three kind of cases <br>
+From above plot, we can see SVR is a good model in predicting confirmed and recovered cases ,yet not so accurate on predicting death cases.   </p>
+<p><img alt="Pelican" src="../images/s2.png">
+<img alt="Pelican" src="../images/s3.png">
+<img alt="Pelican" src="../images/s1.png"></p>
+<h3>Prophet</h3>
+<p>As for Prophet, an open source library that is published by Facebook, it has the ability to make good predictions for time series dataset, but works like a black box. The code and command are easy to use and the results are also pretty good. When using Prophet to predict the global death case, the MAE can be 1755.8, much less than using SARIMAX.<br>
+We have trained prophet model use either logistic or linear functions as trend model. After evaluating the prediction result, we found this model performs well for short-term prediction. But for long-term, the results are out of our expectation. Below is the result plot.  </p>
+<p><img alt="Pelican" src="../images/s5.png">
+<img alt="Pelican" src="../images/s6.png"></p>
+<p>Each model has its advantage in prediction accuracy, but also has some limitations shown above. </p>
+<h2>Related Skills</h2>
+<ul>
+<li>Time series models  </li>
+<li>Functional programming  </li>
+<li>Data collection and preprocessing  </li>
+<li>Visualization with interactive plots (<code>plotly</code>, <code>altair</code>)  </li>
+<li><code>streamlit</code> Dashboard   </li>
+</ul>
+<h2>Reflection and Insight</h2>
+<p>From what we analysis, we can see Covid19 is still severe worldwide, hope what we did can make more people to pay attention to it and hope more healthcare can be provided for this.</p>
+<p>In this project, I have practiced my skills on collecting and cleaning datasets, visualizing data in dashboard, and exploring  time-series models and machine learning model for predicting new cases in the next time period. Also, I  practice my teamworking skills, especially we can only meet visually.</p>
+<p>At last, thanks for all the work and amazing ideas from  my teammate : Xiangwen Mo, Fan Yang and Bingruo Wu. We had a great time working together and I also learned a lot from them. Also, it was a great experience studying BIOS823.  </p>
+<h2>References</h2>
+<p>https://github.com/CSSEGISandData/COVID-19<br>
+https://plotly.com/python/scattermapbox/<br>
+https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_sarimax_stata.html<br>
+https://www.sciencedirect.com/science/article/pii/S0960077920302538<br>
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7390340/<br>
+https://machinelearningmastery.com/time-series-forecasting-with-prophet-in-python/<br>
+https://www.streamlit.io/  </p>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+function getPlotlyJSON(div, url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 400) {
+        var figure = JSON.parse(request.responseText);
+        Plotly.plot(div, figure.data, figure.layout);
+      }
+    };
+    request.send();
+}
+getPlotlyJSON("81d3caab-5cf1-4ec7-aa23-72079f812201", "/images/us.json");
+getPlotlyJSON("3016be4f-36e9-4cc7-9576-d60897c3c798", "/images/death.json");
+getPlotlyJSON("18fc33ad-2780-4fea-bd06-15330214ebc2", "/images/case-fatality.json");
+</script>
+
+    </article>
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Blog powered by <a href="http://getpelican.com">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
